@@ -1,0 +1,45 @@
+<div class="container">
+	<h4 style="color:#fffdf9">Post a new job</h4><br>
+
+<p style="color:red"><font size="3">{{error.message}}</font></p>
+
+<table>
+	<tr>
+		<td style="color: #fffdf9">Job Title</td>
+		<td><input type="text" class="form-control" ng-model="job.jobTitle"></td>
+	</tr>
+    <tr>
+		<td style="color: #fffdf9">Job Description</td>
+		<td><textarea class="form-control" ng-model="job.jobDescription"></textarea></td>
+	</tr>
+	<tr>
+		<td style="color: #fffdf9">Skills Required</td>
+		<td><input type="text" class="form-control" ng-model="job.skillsRequired"></td>
+	</tr>
+	<tr>
+		<td style="color: #fffdf9">Location</td>
+		<td><input type="text" class="form-control" ng-model="job.location"></td>
+	</tr>
+	<tr>
+		<td style="color: #fffdf9">Company Name</td>
+		<td><input type="text" class="form-control" ng-model="job.companyName"></td>
+	</tr>
+	<tr>
+		<td style="color: #fffdf9">Years Of Exp</td>
+		<td><input type="text" class="form-control" ng-model="job.yrsOfExp"></td>
+	</tr>
+	<tr>
+		<td style="color: #fffdf9">Salary</td>
+		<td><input type="text" class="form-control" ng-model="job.salary"></td>
+	</tr>
+	<tr>
+		<td style="color: #fffdf9">Vacancies</td>
+		<td><input type="text" class="form-control" ng-model="job.vacancies"></td>
+	</tr>
+	
+	<tr>
+	    <td><button type="submit" class="btn-warning block2 btn" value="Add Job" ng-click="addJob(job)">Post job</button></td>
+	</tr>
+</table>
+
+</div>

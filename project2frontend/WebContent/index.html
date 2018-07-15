@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your SNS</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" />
+<link href="http://localhost:8088/project2frontend/resources/css/likes.css" rel="stylesheet">
+
+<style>
+body {
+  background-color: black; 
+  display: flex;
+  flex-direction: column;
+}
+.bg{
+	background: url("resources/images/b2.jpg");
+	height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imgcontainer {
+	padding-top: 10px;
+	text-align: center;
+	margin: 6px 0 3px 0;
+	padding-bottom: 15px;
+}
+img.avatar {
+	width: auto;
+	border-radius: 50%;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+  color: #9597af;
+  background-color: #101010;
+}
+html, body {
+  height: 100%;
+}
+</style>
+</head>
+
+<body ng-app="app">
+<header>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
+		       <span class="sr-only">Toggle navigation</span>
+		       <span class="icon-bar"></span>
+		       <span class="icon-bar"></span>
+		       <span class="icon-bar"></span>
+		    </button>
+			    
+	        <div class="navbar-header" style="padding-top:15px">
+	            <a class="navbar-brand" href="#/brand">UR SNS</a>
+	        </div>
+			<div class="collapse navbar-collapse" id="collapse-example">
+                <ul class="nav navbar-nav ">
+		            <li><a href="#/home"><button class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-home"></span>Home</button></a></li>
+		            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined"><button class="btn btn-primary navbar-btn">Job<b class="caret"></b></button></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a></li>
+							<li><a href="#/activejobs">View Jobs</a></li>
+							<li><a href="#/inactivejobs" ng-show="loggedInUser.role=='ADMIN'">Inactive jobs</a>		
+						</ul>
+					</li>
+					
+		            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined"><button class="btn btn-primary navbar-btn">Blog<b class="caret"></b></button></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addblog">Post Blog</a></li>
+							<li><a href="#/blogsapproved">List Of Blogs</a></li>
+							<li><a href="#/blogswaitingforapproval" ng-show="loggedInUser.role=='ADMIN'">Blogs Waiting For Approval</a>	
+						</ul>
+					</li>
+		           
+		            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined"><button class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-user"></span>Sign Up</button></a></li>
+		            <li><a href="#/login" ng-show="loggedInUser.firstname==undefined"><button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"></span>Sign In</button></a></li>
+            
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li style="padding-top:15px"><a href="#/uploadprofilepic" ng-show="loggedInUser.firstname!=undefined"> 
+						<img src="http://localhost:8088/project2middleware/getimage/{{loggedInUser.email}}" alt=" " height="40px" width="40px" class="img-circle">
+					</a></li>
+					<li style="padding-top:15px"><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} {{loggedInUser.lastname}}</a></li>
+					<li><a href="#/chat" ng-show="loggedInUser.firstname!=undefined"><button class="btn btn-secondary navbar-btn">Start Chat</button></a></li>
+		            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined"><button class="btn btn-warning navbar-btn">Friends<b class="caret"></b></button></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/myfriends">My Friends</a></li>
+							<li><a href="#/requestspending">Pending Requests</a></li>
+							<li><a href="#/suggestedfriends">Suggested Friends</a></li>
+						</ul>
+					 </li>
+					 <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined"><button class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span>Sign out</button></a></li>
+		        </ul>
+
+			</div>
+		</div>
+	</nav>
+</header>
+
+<div class="content" ng-view> </div>
+
+<div class="footer container-lg px-3" role="contentinfo">
+  <div class="position-relative d-flex flex-justify">
+    <ul style="list-style: none" class="d-flex flex-row ">
+		<li>© 2018 UR SNS</li>
+		<li style="float:right">Contact us</li>
+		<li>About us</li>
+		<li style="float:right">Terms & Conditions</li>
+		<li>Privacy</li>
+	</ul>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+	
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="user/usercontroller.js"></script>
+<script type="text/javascript" src="user/userservice.js"></script>
+
+<script type="text/javascript" src="job/jobcontroller.js"></script>
+<script type="text/javascript" src="job/jobservice.js"></script>
+
+<script type="text/javascript" src="blog/blogpostcontroller.js"></script>
+<script type="text/javascript" src="blog/blogservice.js"></script>
+
+<script type="text/javascript" src="friend/friendcontroller.js"></script>
+<script type="text/javascript" src="friend/friendservice.js"></script>
+
+<script type="text/javascript" src="chat/chatcontroller.js"></script>
+<script type="text/javascript" src="chat/chatservice.js"></script>
+<script type="text/javascript" src="chat/sock.js"></script>
+<script type="text/javascript" src="chat/sock.min.js"></script>
+<script type="text/javascript" src="chat/stomp.js"></script>
+<script type="text/javascript" src="chat/stomp.min.js"></script>
+
+</body>
+
+</html>

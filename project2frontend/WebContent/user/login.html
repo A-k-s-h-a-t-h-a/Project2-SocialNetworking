@@ -1,0 +1,33 @@
+<div class="container-fluid bg">
+<center>
+	<p style="color:red"><font size="3">{{error.message}}</font></p>
+</center>
+
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 col-sm-4 col-xs-12">
+			<form class= "form-container">
+			
+				<h2>Sign In</h2>
+				<a href="#registration" style="color: dodgerblue">New to this site? Sign Up</a><br><br>
+		
+				<div class="imgcontainer">
+					<img src="http://localhost:8088/project2frontend/resources/images/avatar.png" alt="Avatar" class="avatar">
+				</div>
+		
+				<div class="form-group">
+					<label style="color: #241ee8"><b>Email id</b></label> 
+					<input class="form-control" type="email" ng-model="user.email" required><br>
+		
+					<label style="color: #1db8e8"><b>Password</b></label> 
+					<input class="form-control" type="password" ng-model="user.password" required><br><br>
+				
+					<button type="submit" class="btn-success block1 btn form-control" value="login" ng-click="login(user)">Sign In</button><br><br>
+					<button type="reset" class="btn-danger block2 btn form-control">Cancel</button>	
+				</div>
+			</form>
+		</div>
+		
+		<div class="col-md-3"></div>
+	</div>
+</div>

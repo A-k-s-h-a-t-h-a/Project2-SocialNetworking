@@ -1,0 +1,39 @@
+<center>
+	<p style="color: red">
+		<font size="3">{{error.message}}</font>
+	</p>
+</center>
+<div class="panel panel-danger">
+	<div class="panel-heading"><h3>Inactive Jobs</h3></div>
+	<div class="panel-body">
+		<h3>
+			<span ng-if="inActiveJobs.length==0">No InActive Jobs</span>
+		</h3>
+		
+		<ul style="list-style: none">
+			<li ng-repeat="job in inActiveJobs">
+				<b>Job Title: </b>{{job.jobTitle}}<br>
+				<b>Skills Required: </b>{{job.skillsRequired}}<br> 
+				<b>Posted On: </b>{{job.postedOn | date:'medium'}}<br>
+				
+				<div ng-show="isClicked && job.id==id ">
+					<b>Job Description: </b>{{job.jobDescription}}<br> 
+					<b>Salary: </b>{{job.salary}}<br>
+					<b>Location: </b>{{job.location}}<br> 
+					<b>Company Name: </b>{{job.companyname}}<br>
+					<b>Years Of Exp: </b>{{job.yrsOfExp}}<br>
+					<b>Vacancies: </b>{{job.vacancies}}<br>
+				</div> 
+				
+				<a ng-click="showJobDetails(job.id)"> 
+					<span ng-show="isClicked && job.id==id">Hide details</span> 
+					<span ng-hide="isClicked && job.id==id">Show details</span>
+				</a><br>
+				
+				<button class="btn btn-success" ng-click="activateJobPosition(job)">Activate Job Position</button>
+				<hr>
+			</li>
+		</ul>
+		
+	</div>
+</div>

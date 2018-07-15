@@ -1,0 +1,53 @@
+<link href="resources/css/darkbackground.css" rel="stylesheet">
+<link href="resources/css/portfolio.css" rel="stylesheet">
+
+<header class="container">
+	<div class="masthead">
+		<h2 style="color: #f5e5ff; font-family:Georgia"> Chat <small style= "font-family:Georgia">with your friends</small> </h2>
+	</div>
+</header>
+
+<section class="main container">
+	<div class="row">
+		<div class="col-md-12">
+			<p class="lead" style="color: #f9fff2; font-family:Georgia">Find your friends and have a jolly good time!</p><br>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" id="chatForm" ng-submit="sendMessage(chat)">
+				<div class="alert alert-info notification" id="joinedChat" ng-if="latestUser" ng-animate="{enter: 'fade', leave: 'fade'}">
+					<!-- when a new user joins the chat room, other user will get this message for a few seconds -->
+					<p style="color: #f9fff2; font-family:Georgia">{{latestUser}} has joined the chat!</p>
+				</div>
+				<div class="form-group">
+					<label style="color: #e8e8ff; font-family:Times New Roman">Send To: </label> 
+					<select class="form-control" ng-model="chat.to">
+						<option value="">Select Recipient</option>
+						<option value="all">Everyone</option>
+						<option ng-repeat="user in users" ng-hide="{{user.online==false}}" value="{{user}}">{{user.firstname}}
+						</option>
+					</select>
+					<br>
+				</div>
+				<div class="form-group">
+					<label style="color: #e8e8ff; font-family:Times New Roman">Message</label>
+					<textarea class="form-control focus-on-click" name="message" placeholder="Message..." rows="3" ng-model="chat.message"></textarea><br>
+				</div>
+				<input type="submit" ng-focus="focus-on-click" class="btn btn-success" value="Send" /><br><br>
+			</form>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-repeat="chat in chats | reverse" class="chat {{chat.direction}}" ng-class="{'broadcast': chat.broadcast}">
+				<span class="from" style="color: #cfebf9"> <b>:{{chat.from}}</b> <small ng-if="chat.broadcast">BROADCAST</small> </span> 
+				<span class="message" style="color: #cff6f9">{{chat.message}}</span>
+			</div>
+		</div>
+	</div>
+
+</section>

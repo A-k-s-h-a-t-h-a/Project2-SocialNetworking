@@ -1,0 +1,47 @@
+<div class="container-fluid bg">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 col-sm-4 col-xs-12">
+			<form class= "form-container">
+			
+				<h1>Sign Up</h1>
+				
+				<div class="form-group">
+					<a href="#login" style="float:right; color: dodgerblue">Already a member? Log in</a>
+					<p>Please fill in this form to create an account.</p><br>
+				
+
+					<label><b>Email</b></label> 
+					<input style="color:black" class="form-control"  type="email" ng-model="user.email" required> <br>
+					
+					<label><b>Password</b></label> 
+					<input style="color:black" class="form-control"  type="password" ng-model="user.password" required> <br>
+					
+					<label><b>First name</b></label> 
+					<input style="color:black" class="form-control"  type="text" ng-model="user.firstname" required> <br>
+					
+					<label><b>Last Name</b></label> 
+					<input style="color:black" class="form-control"  type="text" ng-model="user.lastname"> <br>
+					
+					<label style="color:grey"><b>Mobile number</b></label> 
+					<input style="color:black" class="form-control" type="number" ng-model="user.phonenumber" required> <br>
+					
+					<label style="color:grey">Select Role</label>
+					<select class="form-control"  ng-model="user.role">
+						<option value="STUDENT">Student
+						<option value="EMPLOYEE">Employee
+						<option value="ALUMNI">Alumni  
+					</select><br>
+				
+					<button type="submit" class="btn-success block1 btn form-control" value="Register" ng-click="register(user)">Sign Up</button><br>
+					<button type=reset class="btn-danger block2 btn form-control" style="float:right">Cancel</button><br><br>
+				
+					<p style="color: dodgerblue">
+						By creating an account you agree to our Terms & Privacy</a>.
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	

@@ -1,0 +1,17 @@
+<div>
+	<div class="panel panel-success">
+	
+		<div class="panel-heading"><h4>View blogs <p ng-show="loggedInUser.role=='ADMIN'">approved</p></h4></div>
+		
+		<div class="panel-body">
+			<ul>
+				<li ng-repeat="blog in blogsApproved">
+				    <a href="#/getblogpost/{{blog.id}}"><b>Blog Title:</b>{{blog.blogTitle}}<br> </a>
+					<b>Posted On:</b>{{blog.postedOn | date:'medium'}}<br>
+			        <b>Posted By:</b>{{blog.postedBy.firstname}} {{blog.postedBy.lastname}}<br>	
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+</div>

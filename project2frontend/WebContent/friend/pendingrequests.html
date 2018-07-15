@@ -1,0 +1,26 @@
+<div>
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4>Pending Requests</h4></div>
+		
+		<div class="panel-body">
+			<span ng-if="pendingRequests.length==0"><b>No Pending Requests</b></span>
+			
+			<ul style="list-style: none">
+				<li ng-repeat="request in pendingRequests">
+					<div style="background-color: #e7ffbc">
+						<b>{{request.fromId.email}}</b><br>
+						<b>{{request.fromId.firstname}} {{request.fromId.lastname}}</b><br> 
+						<b>{{request.fromId.phonenumber}}</b><br>
+						
+						<img src="http://localhost:8088/project2middleware/getimage/{{request.fromId.email}}" alt="No image" height="40px" width="40px"><br>
+						
+						<button type="button" class="btn btn-success" ng-click="acceptRequest(request)">Accept</button>
+						<button type="button" class="btn btn-danger" ng-click="deleteRequest(request)">Decline</button>
+						<hr>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+</div>

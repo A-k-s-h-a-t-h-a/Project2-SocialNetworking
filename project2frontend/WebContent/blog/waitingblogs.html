@@ -1,0 +1,19 @@
+<div class="panel panel-secondary">
+	<div class="panel-heading">Blogs Waiting For Your Approval</div>
+	<div class="panel-body">
+	
+		<ul style="list-style: none">
+			<li ng-repeat="blog in waitingblogs">
+				
+				<b>Blog Title: </b>{{blog.blogTitle}}<br>
+				<b>Posted By: </b>{{blog.postedBy.firstname}} {{blog.postedBy.lastname}}<br> 
+				<b>Posted On: </b>{{blog.postedOn | date:'medium'}}<br>
+				
+				<button class="btn btn-danger" ng-click="reject(blog)">Delete Blog</button>
+         		<button class="btn btn-success" ng-click="approve(blog)">Approve Blog</button>
+         		
+         	</li>
+		</ul>
+		
+	</div>
+</div>

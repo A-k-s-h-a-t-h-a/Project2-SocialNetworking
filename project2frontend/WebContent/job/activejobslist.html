@@ -1,0 +1,35 @@
+<div>
+	<div class="panel panel-success">
+		<div class="panel-heading"><h3>View Jobs</h3></div>
+		<div class="panel-body">
+		
+			<ul style="list-style: none">
+				<li ng-repeat="job in activeJobs">
+					<b>Job Title: </b>{{job.jobTitle}}<br>
+					<b>Skills Required: </b>{{job.skillsRequired}}<br> 
+					<b>Posted On: </b>{{job.postedOn | date:'medium'}}<br>
+					
+					<div ng-show="isClicked && job.id==id ">
+						<b>Job Description: </b>{{job.jobDescription}}<br> 
+						<b>Salary: </b>{{job.salary}}<br>
+						<b>Location: </b>{{job.location}}<br> 
+						<b>Company Name: </b>{{job.companyname}}<br>
+						<b>Years Of Exp: </b>{{job.yrsOfExp}}<br>
+						<b>Vacancies: </b>{{job.vacancies}}<br>
+					</div> 
+					
+					<a ng-click="showJobDetails(job.id)"> 
+						<span ng-show="isClicked && job.id==id">Hide details</span> 
+						<span ng-hide="isClicked && job.id==id">Show details</span> 
+					</a><br>
+					
+					<span ng-show="loggedInUser.role=='ADMIN'">
+	         			<button class="btn btn-danger" ng-click="deactivateJobPosition(job)">Deactivate Job Position</button>
+	         		</span>
+	         		<hr>
+	         	</li>
+			</ul>
+			
+		</div>
+	</div>
+</div>

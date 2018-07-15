@@ -1,0 +1,23 @@
+<div>
+	<div class="panel panel-default">
+		<div class="panel-heading"><b>My Friends</b></div>
+			
+		<div class="panel-body">
+			<span ng-if="friends.length==0"><b>You have not made any friends as yet</b></span>
+			
+			<ul style="list-style: none">
+				<li ng-repeat="friend in friends">
+					<div style="background-color: #f0f8ff">
+						{{friend.email}}<br>
+						<b>{{friend.firstname}} {{friend.lastname}}</b><br>
+						{{friend.phonenumber}}<br> 
+						{{friend.role}}<br> 
+					
+						<img src="http://localhost:8088/project2middleware/getimage/{{friend.email}}" alt=" " height="40px" width="40px">
+						<hr>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
